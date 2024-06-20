@@ -15,6 +15,7 @@ resource "aws_subnet" "subnet1" {
   tags       = {
     Name     = "subnet1"
   }
+  depends_on = [ aws_vpc.vpc ]
 }
 
 resource "aws_subnet" "subnet2" {
@@ -24,6 +25,7 @@ resource "aws_subnet" "subnet2" {
   tags       = {
     Name     = "subnet2"
   }
+  depends_on = [ aws_subnet.subnet1 ]
 }
 
 resource "aws_subnet" "subnet3" {
@@ -33,4 +35,5 @@ resource "aws_subnet" "subnet3" {
   tags       = {
     Name     = "subnet3"
   }
+  depends_on = [ aws_subnet.subnet2 ]
 }
